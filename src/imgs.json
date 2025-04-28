@@ -1,0 +1,70 @@
+const habilities = {
+    "Frontend": [
+        {
+            "name": "HTML5",
+            "img": "/assets/HTML5.png",
+            "class": ""
+        },
+        {
+            "name": "CSS3",
+            "img": "/assets/CSS3.png",
+            "class": ""
+        },
+        {
+            "name": "JavaScript",
+            "img": "/assets/JS.png",
+            "class": ""
+        },
+        {
+            "name": "Bootstrap 5.3",
+            "img": "/assets/Bootstrap.png",
+            "class": ""
+        },
+        {
+            "name": "Tailwind CSS",
+            "img": "/assets/Tailwind_CSS.png",
+            "class": ""
+        }
+    ],
+    "Backend": [
+        {
+            "name": "Python",
+            "img": "/assets/python.png",
+            "class": ""
+        },
+        {
+            "name": "JAVA",
+            "img": "/assets/JAVA.png",
+            "class": ""
+        },
+    ],
+    "Frameworks": [
+        {
+            "name": "Django",
+            "img": "/assets/django.png",
+            "class": ""
+        },
+        {
+            "name": "React",
+            "img": "/assets/.png",
+            "class": ""
+        },
+        {
+            "name": "Nextjs",
+            "img": "/assets/.png",
+            "class": ""
+        }
+    ],
+    "Bases de Datos": [
+        {
+            "name": "PostgreSQL",
+            "img": "/assets/.png",
+            "class": ""
+        },
+        {
+            "name": "SQLite",
+            "img": "/assets/sqlite.png",
+            "class": ""
+        }
+    ],
+}

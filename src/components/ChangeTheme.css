@@ -1,0 +1,6 @@
+html[data-bs-theme="light"] .theme-change-sun{
+    display: none;
+  }
+  html[data-bs-theme="dark"] .theme-change-moon{
+    display: none;
+  }

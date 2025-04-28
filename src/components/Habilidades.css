@@ -1,0 +1,9 @@
+.card-tecn{
+    height: 10.5rem;
+    width: 8rem;
+    transition: 200ms all ease-in-out;
+  }
+  .card-tecn:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+  }

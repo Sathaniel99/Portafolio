@@ -1,0 +1,68 @@
+
+body {
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+}
+.high-card {
+  max-width: 800px;
+  height: 80vh;
+}
+html[data-bs-theme="dark"] .shadow{
+ box-shadow: 0 0 1rem rgba(255, 255, 255, 0.15) !important;
+}
+.filter-reverse{
+  filter: invert();
+}
+.btn{
+  transition: background 0.5s ease, color 0.5s ease;
+}
+::-webkit-scrollbar{
+  display: none;
+}
+.nav-pills .nav-link.active{
+  background-color: #526375;
+  box-shadow: rgb(97, 97, 97) 0 0 10px;
+}
+.nav-link{
+  color: #526375;
+  font-weight: 700;
+  transition: 300ms all ease-in-out;
+}
+html[data-bs-theme="dark"] :root{
+  --navlink-color: white;
+}
+html[data-bs-theme="light"] :root{
+  --navlink-color: black;
+}
+.nav-link:focus, .nav-link:hover {
+  color: var(--navlink-color);
+  box-shadow: rgb(97, 97, 97) 0 0 10px;
+}
+.width-15{
+  width: 15rem;
+}
+input[type="checkbox"] {
+  cursor: pointer;
+}
+@media (max-width: 767.98px) {
+  #sideLeftBar {
+    display: none !important;
+  }
+
+  .d-md-none {
+    display: block !important;
+  }
+}
+@media (min-width: 768px) {
+  #sideLeftBar {
+    display: block !important;
+  }
+
+  .d-md-none {
+    display: none !important;
+  }
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
