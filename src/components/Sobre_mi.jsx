@@ -6,7 +6,7 @@ export function Sobre_mi() {
     const uciPopover = (
         <Popover id="uci-popover" className="shadow">
             <Popover.Body>
-                <img className="object-fit-contain m-auto h-100 w-100" src="/portfolio/uci.png" alt="UCI" id="img-uci"/>
+                <img className="object-fit-contain m-auto h-100 w-100" src="/Portafolio/uci.png" alt="UCI" id="img-uci"/>
             </Popover.Body>
         </Popover>
     );
@@ -14,7 +14,7 @@ export function Sobre_mi() {
     const habanaPopover = (
         <Popover id="habana-popover" className="shadow">
             <Popover.Body>
-                <img className="h-100 w-100 object-fit-cover rounded border border-1 border-secondary-subtle shadow" src="/portfolio/habana_maps.jpeg" alt="La Habana" id="img-habana"/>
+                <img className="h-100 w-100 object-fit-cover rounded border border-1 border-secondary-subtle shadow" src="/Portafolio/habana_maps.jpeg" alt="La Habana" id="img-habana"/>
             </Popover.Body>
         </Popover>
     );
@@ -22,7 +22,7 @@ export function Sobre_mi() {
     const inotuPopover = (
         <Popover id="inotu-popover" className="shadow">
             <Popover.Body>
-                <img className="h-100 w-100 object-fit-cover m-auto rounded" src="/portfolio/INOTU.png" alt="INOTU" id="img-inotu"/>
+                <img className="h-100 w-100 object-fit-cover m-auto rounded" src="/Portafolio/INOTU.png" alt="INOTU" id="img-inotu"/>
             </Popover.Body>
         </Popover>
     );
