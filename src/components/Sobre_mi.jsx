@@ -27,6 +27,14 @@ export function Sobre_mi() {
         </Popover>
     );
 
+    const sagpnPopover = (
+        <Popover id="sagpn-popover" className="shadow rounded web-container-sagpn">
+            <Popover.Body>
+                <img className="object-fit-contain m-auto h-100 w-100" src="/Portafolio/website.png" alt="SAGPN" id="img-sagpn"/>
+                </Popover.Body>
+            </Popover>
+        );
+
     return (
         <React.Fragment>
             <style>{`
@@ -35,7 +43,7 @@ export function Sobre_mi() {
                     height: 8rem;
                     display: flex;
                 }
-                #sagpn-popover{
+                .web-container-sagpn{
                     max-width: 38rem;
                     height: 20rem;
                     display: flex;
@@ -52,21 +60,30 @@ export function Sobre_mi() {
             `}</style>
             <h3 className="mt-3 w-100 text-center">Sobre Mí</h3>
             <hr className="w-100 border border-1 border-secondary" />
-            <p className="text-center fs-5">
+            <p className="text-start fs-5 lh-sm">
                 Mi nombre es <span className="user-select-all">Adán Luis Quincoces Escalona</span>, tengo 25 años, soy graduado de <span className="user-select-all">Ingeniero en Ciencias Informáticas</span> de la 
                 <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={uciPopover}>
-                    <a className="text-decoration-none" href="https://www.uci.cu/"> Universidad de las Ciencias Informáticas (UCI)</a>
+                    <a className="text-decoration-none text-primary-emphasis" href="https://www.uci.cu/"> Universidad de las Ciencias Informáticas (UCI)</a>
                 </OverlayTrigger> en 
                 <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={habanaPopover}>
-                    <a className="text-decoration-none" href="https://www.bing.com/maps?q=La%20Habana&amp;satid=id.sid%3A3ca5066a-a331-c1b3-135f-1fde36da55db&amp;FORM=KC2MAP"> La Habana</a>
+                    <a className="text-decoration-none text-primary-emphasis" href="https://www.bing.com/maps?q=La%20Habana&amp;satid=id.sid%3A3ca5066a-a331-c1b3-135f-1fde36da55db&amp;FORM=KC2MAP"> La Habana</a>
                 </OverlayTrigger>,
                 donde culminé mis estudios en julio de 2024. Previo a mi formación universitaria, me gradué del Instituto Preuniversitario de Veguitas Granma (I.P.U. Abel Santamaría Cuadrado) en junio de 2017.
             </p>
-            <p className="text-center fs-5">
+            <p className="text-start fs-5 lh-sm">
                 Actualmente trabajo como Director de Informática en el 
                 <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={inotuPopover}>
-                    <a className="text-decoration-none" href="https://www.inotu.gob.cu/es"> Insituto Nacional de Ordenamiento Territorial y Urbanismo <strong>(INOTU)</strong></a>
-                </OverlayTrigger>, ubicado en Boyeros, La Habana. En esta posición, complemento el desarrollo y gestión del proyecto Sistema Automatizado de Gestión y Control (SAGC) , donde me encargo de aspectos relacionados con la Ciberseguridad, Modularidad, Diseño de Interfaces y Mapas Catastrales. Con más de 3 años de experiencia en el desarrollo de software tanto web como de escritorio. Además, poseo conocimientos integrales que abarcan todas las etapas del ciclo de vida del software, incluyendo el análisis de requisitos, diseño e implementación de aplicaciones, administración de bases de datos y gestión de infraestructuras (a nivel básico). En el desarrollo de mi tesis, implementé la metodología AUP-UCI , lo que me permitió fortalecer mis habilidades en la planificación y ejecución de proyectos de software. También tengo experiencia utilizando herramientas de colaboración como Git y GitHub , para un trabajo en equipo eficiente y una buena gestión efectiva de equipos de desarrollo.
+                    <a className="text-decoration-none text-primary-emphasis" href="https://www.inotu.gob.cu/es"> Insituto Nacional de Ordenamiento Territorial y Urbanismo <strong>(INOTU)</strong></a>
+                </OverlayTrigger>, ubicado en Boyeros, La Habana. En esta posición, complemento el desarrollo y gestión del proyecto :
+                <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={sagpnPopover}>
+                    <p className="text-decoration-none text-primary-emphasis cursor-pointer text-wrap text-break">- Sistema Automatizado de Gestión y Control <strong>(SAGC)</strong></p>
+                </OverlayTrigger>
+                Donde me encargo de aspectos relacionados con la Ciberseguridad, Modularidad, Diseño de Interfaces y Mapas Catastrales.
+            </p>
+            <p className="text-start fs-5 lh-sm">
+            Con más de 3 años de experiencia en el desarrollo de software tanto web como de escritorio. Además, poseo conocimientos integrales que abarcan todas las etapas del ciclo de vida del software, incluyendo el análisis de requisitos, diseño e implementación de aplicaciones, administración de bases de datos y gestión de infraestructuras (a nivel básico).
+            <br />
+            En el desarrollo de mi tesis, implementé la metodología AUP-UCI , lo que me permitió fortalecer mis habilidades en la planificación y ejecución de proyectos de software. También tengo experiencia utilizando herramientas de colaboración como Git y GitHub , para un trabajo en equipo eficiente y una buena gestión efectiva de equipos de desarrollo.
             </p>
         </React.Fragment>
     );

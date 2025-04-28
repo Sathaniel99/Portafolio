@@ -7,7 +7,7 @@ import { FaEye } from "react-icons/fa6";
 
 export function Proyectos(){
     const sagpnPopover = (
-            <Popover id="sagpn-popover" className="shadow rounded">
+            <Popover id="sagpn-popover" className="shadow rounded web-container-sagpn">
                 <Popover.Body>
                     <img className="object-fit-contain m-auto h-100 w-100" src="/Portafolio/sagpn.png" alt="SAGPN" id="img-sagpn"/>
                 </Popover.Body>
