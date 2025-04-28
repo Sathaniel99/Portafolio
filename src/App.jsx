@@ -23,7 +23,7 @@ export function App() {
   const handleShow = () => setShow(true);
 
   return (
-    <div className="high-card border border-1 border-secondary overflow-hidden position-relative m-auto w-100 rounded shadow bg-bg-body-secondary d-flex">
+    <div className="high-card border border-1 border-secondary overflow-hidden position-relative m-auto w-100 rounded shadow bg-body d-flex">
       <Button
         variant="outline-secondary"
         onClick={handleShow}
