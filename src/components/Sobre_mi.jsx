@@ -59,13 +59,14 @@ export function Sobre_mi() {
                 </OverlayTrigger> en 
                 <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={habanaPopover}>
                     <a className="text-decoration-none" href="https://www.bing.com/maps?q=La%20Habana&amp;satid=id.sid%3A3ca5066a-a331-c1b3-135f-1fde36da55db&amp;FORM=KC2MAP"> La Habana</a>
-                </OverlayTrigger>.
+                </OverlayTrigger>,
+                donde culminé mis estudios en julio de 2024. Previo a mi formación universitaria, me gradué del Instituto Preuniversitario de Veguitas Granma (I.P.U. Abel Santamaría Cuadrado) en junio de 2017.
             </p>
             <p className="text-center fs-5">
                 Actualmente trabajo como Director de Informática en el 
                 <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={inotuPopover}>
                     <a className="text-decoration-none" href="https://www.inotu.gob.cu/es"> Insituto Nacional de Ordenamiento Territorial y Urbanismo <strong>(INOTU)</strong></a>
-                </OverlayTrigger>, el cual reside en La Habana, Boyeros.
+                </OverlayTrigger>, ubicado en Boyeros, La Habana. En esta posición, complemento el desarrollo y gestión del proyecto Sistema Automatizado de Gestión y Control (SAGC) , donde me encargo de aspectos relacionados con la Ciberseguridad, Modularidad, Diseño de Interfaces y Mapas Catastrales. Con más de 3 años de experiencia en el desarrollo de software tanto web como de escritorio. Además, poseo conocimientos integrales que abarcan todas las etapas del ciclo de vida del software, incluyendo el análisis de requisitos, diseño e implementación de aplicaciones, administración de bases de datos y gestión de infraestructuras (a nivel básico). En el desarrollo de mi tesis, implementé la metodología AUP-UCI , lo que me permitió fortalecer mis habilidades en la planificación y ejecución de proyectos de software. También tengo experiencia utilizando herramientas de colaboración como Git y GitHub , para un trabajo en equipo eficiente y una buena gestión efectiva de equipos de desarrollo.
             </p>
         </React.Fragment>
     );
