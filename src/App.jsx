@@ -50,7 +50,7 @@ export function App() {
                     </Spinner>
                   </div>
                 )}
-                <Image
+                <img
                   src="/Portafolio/user.jpg"
                   roundedCircle
                   className={`img-fluid shadow border border-2 border-bg-secondary-subtle p-1 ${isLoading ? 'invisible' : ''}`}
