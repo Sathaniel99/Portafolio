@@ -113,40 +113,42 @@ export function Proyectos() {
 
   return (
     <React.Fragment>
-      <h3 className="mt-3 w-100">Proyectos</h3>
-      <Hr/>
-      <p className="">
-        Actualmente me encuentro trabajando en un proyecto para mi empresa, llamado Sistema Automatizado de Gestión y Control (SAGC) en el cual
-        gestiono lo relacionado con la Ciberseguridad, Modularidad, Diseño de interfaces y Mapas Catastrales.
-      </p>
-      {isLoading && (
-        <div className="position-absolute top-50 start-50 translate-middle">
-            <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </Spinner>
+        <h3 className="mt-3 w-100">Proyectos</h3>
+        <Hr/>
+        <p className="">
+            Actualmente me encuentro trabajando en un proyecto para mi empresa, llamado Sistema Automatizado de Gestión y Control (SAGC) en el cual
+            gestiono lo relacionado con la Ciberseguridad, Modularidad, Diseño de interfaces y Mapas Catastrales.
+        </p>
+        <div className="position-relative container">
+            {isLoading && (
+                <div className="position-absolute top-50 start-50 translate-middle">
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                </div>
+                )}
+                <img className={`img-fluid rounded-2 shadow border border-1 border-secondary ${isLoading ? 'invisible' : ''}`}
+                onLoad={handleImageLoad}
+                loading="lazy"
+                src="/Portafolio/website.png" alt="Web SAGC"/>
         </div>
-        )}
-        <img className={`img-fluid rounded-2 shadow border border-1 border-secondary ${isLoading ? 'invisible' : ''}`}
-            onLoad={handleImageLoad}
-            loading="lazy"
-            src="/Portafolio/website.png" alt="Web SAGC"/>
-      <p className=" fw-light fst-italic fs-6 lh-1 mt-1">Web en desarrollo.</p>
-      <p className="">
-        Dicha web gestiona y controla los tramites y las ilegalidades que ocurren a nivel nacional, asi como todo el proceso y toma de decisiones de estos.
-      </p>
-      <Hr />
-      
-      {projects.map((project, index) => (
-        <ProjectCard
-          key={index}
-          name={project.name}
-          description={project.description}
-          repoUrl={project.repoUrl}
-          technologies={project.technologies}
-        />
-      ))}
-      
-      <Hr />
+        <p className="fw-light fst-italic fs-6 lh-1 mt-1">Web en desarrollo.</p>
+        <p className="">
+          Dicha web gestiona y controla los tramites y las ilegalidades que ocurren a nivel nacional, asi como todo el proceso y toma de decisiones de estos.
+        </p>
+        <Hr />
+                
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            name={project.name}
+            description={project.description}
+            repoUrl={project.repoUrl}
+            technologies={project.technologies}
+          />
+        ))}
+
+        <Hr />
     </React.Fragment>
   );
 }
