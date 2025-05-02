@@ -12,7 +12,7 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
-import { Button, Offcanvas } from "react-bootstrap";
+import { Button, Offcanvas, Spinner } from "react-bootstrap";
 import { LuSquareMenu } from "react-icons/lu";
 import "./App.css";
 
@@ -21,6 +21,10 @@ export function App() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
 
   return (
     <div className="high-card border border-1 border-secondary overflow-hidden position-relative m-auto w-100 rounded shadow bg-body d-flex">
@@ -39,10 +43,19 @@ export function App() {
         <Offcanvas.Body>
         <Nav variant="pills" className="flex-column h-100 p-1 align-items-center">
               <Nav.Item className="w-100 pb-2 p-4">
+                {isLoading && (
+                  <div className="position-absolute top-50 start-50 translate-middle">
+                    <Spinner animation="border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                  </div>
+                )}
                 <Image
                   src="/Portafolio/user.jpg"
                   roundedCircle
-                  className="img-fluid shadow border border-2 border-bg-secondary-subtle p-1"
+                  className={`img-fluid shadow border border-2 border-bg-secondary-subtle p-1 ${isLoading ? 'invisible' : ''}`}
+                  onLoad={handleImageLoad}
+                  loading="lazy"
                 />
               </Nav.Item>
               <Nav.Item>
