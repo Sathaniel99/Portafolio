@@ -4,6 +4,8 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import { Hr } from "./hr";
 import { Popover, OverlayTrigger } from "react-bootstrap";
 import { FaEye } from "react-icons/fa6";
+import { Spinner } from "react-bootstrap";
+import { useState } from "react";
 
 const ProjectCard = ({ 
   name, 
@@ -71,39 +73,43 @@ const ProjectCard = ({
 };
 
 export function Proyectos() {
-  const projects = [
-    {
-        name: "SAGPN",
-        description: "\"Sistema Automatizado de Gestión de Problemas y Necesidades\" de una empresa mediante la creacion de Tickets dirigido principalmente a temas Informáticos-Técnicos.",
-        repoUrl: "https://github.com/Sathaniel99/SAGPN",
-        technologies: [
-            { name: "Django", color: "bg-success" },
-            { name: "Bootstrap", color: "bg-violet" },
-            { name: "SQLite", color: "bg-secondary" },
-            { name: "HTMX", color: "bg-green-grey" },
-            { name: "HighCharts", color: "bg-primary" }
-        ]
-    },
-    {
-        name: "Contador",
-        description: "Un contador simple para dos variables (P y S).",
-        repoUrl: "https://github.com/Sathaniel99/Contador",
-        technologies: [
-            { name: "Python", color: "bg-blue" }
-        ]
-    },
-    {
-        name: "PassGen",
-        description: "Generador de Contraseñas Seguras con Toast.",
-        repoUrl: "https://github.com/Sathaniel99/PassGen",
-        technologies: [
-            { name: "HTML", color: "bg-orange" },
-            { name: "CSS", color: "bg-primary" },
-            { name: "JavaScript", color: "bg-warning" },
-            { name: "Bootstrap", color: "bg-violet" }
-        ]
-    }
-  ];
+    const [isLoading, setIsLoading] = useState(true);
+      const handleImageLoad = () => {
+        setIsLoading(false);
+    };
+    const projects = [
+        {
+            name: "SAGPN",
+            description: "\"Sistema Automatizado de Gestión de Problemas y Necesidades\" de una empresa mediante la creacion de Tickets dirigido principalmente a temas Informáticos-Técnicos.",
+            repoUrl: "https://github.com/Sathaniel99/SAGPN",
+            technologies: [
+                { name: "Django", color: "bg-success" },
+                { name: "Bootstrap", color: "bg-violet" },
+                { name: "SQLite", color: "bg-secondary" },
+                { name: "HTMX", color: "bg-green-grey" },
+                { name: "HighCharts", color: "bg-primary" }
+            ]
+        },
+        {
+            name: "Contador",
+            description: "Un contador simple para dos variables (P y S).",
+            repoUrl: "https://github.com/Sathaniel99/Contador",
+            technologies: [
+                { name: "Python", color: "bg-blue" }
+            ]
+        },
+        {
+            name: "PassGen",
+            description: "Generador de Contraseñas Seguras con Toast.",
+            repoUrl: "https://github.com/Sathaniel99/PassGen",
+            technologies: [
+                { name: "HTML", color: "bg-orange" },
+                { name: "CSS", color: "bg-primary" },
+                { name: "JavaScript", color: "bg-warning" },
+                { name: "Bootstrap", color: "bg-violet" }
+            ]
+        }
+      ];
 
   return (
     <React.Fragment>
@@ -113,7 +119,17 @@ export function Proyectos() {
         Actualmente me encuentro trabajando en un proyecto para mi empresa, llamado Sistema Automatizado de Gestión y Control (SAGC) en el cual
         gestiono lo relacionado con la Ciberseguridad, Modularidad, Diseño de interfaces y Mapas Catastrales.
       </p>
-      <img className="img-fluid rounded-2 shadow border border-1 border-secondary" src="/Portafolio/website.png" alt="Web SAGC"/>
+      {isLoading && (
+        <div className="position-absolute top-50 start-50 translate-middle">
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </div>
+        )}
+        <img className={`img-fluid rounded-2 shadow border border-1 border-secondary ${isLoading ? 'invisible' : ''}`}
+            onLoad={handleImageLoad}
+            loading="lazy"
+            src="/Portafolio/website.png" alt="Web SAGC"/>
       <p className=" fw-light fst-italic fs-6 lh-1 mt-1">Web en desarrollo.</p>
       <p className="">
         Dicha web gestiona y controla los tramites y las ilegalidades que ocurren a nivel nacional, asi como todo el proceso y toma de decisiones de estos.
