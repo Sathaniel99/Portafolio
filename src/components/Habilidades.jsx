@@ -4,6 +4,8 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "./Habilidades.css";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import { useState } from "react";
+import { Spinner } from "react-bootstrap";
 
 
 export function Habilidades() {
@@ -91,6 +93,20 @@ export function Habilidades() {
         class: `${cardBaseClass} bg-primary-subtle`,
       },
     ],
+    Miscelaneas: [
+      {
+        name: "Github",
+        img: "/Portafolio/github.svg",
+        url: "https://github.com/",
+        class: `${cardBaseClass} bg-secondary-subtle`,
+      },
+      {
+        name: "Vite",
+        img: "/Portafolio/vite.png",
+        url: "https://vite.dev/",
+        class: `${cardBaseClass} bg-primary-subtle`,
+      },
+    ],
   };
 
   return (
@@ -121,6 +137,12 @@ export function Habilidades() {
 }
 
 function Card({ tooltipTitle, className, name, src, alt, url }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
   return (
     <OverlayTrigger
       placement="top"
@@ -137,11 +159,19 @@ function Card({ tooltipTitle, className, name, src, alt, url }) {
         <span className="text-muted d-block border-bottom border-secondary border-1 p-1">
           {name}
         </span>
-        <div className="h-100 w-100 d-flex overflow-hidden">
+        <div className="h-100 w-100 d-flex overflow-hidden position-relative">
+          {isLoading && (
+            <div className="position-absolute top-50 start-50 translate-middle">
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </div>
+          )}
           <img
-            className="object-fit-contain w-100 m-auto"
+            className={`object-fit-contain w-100 m-auto ${isLoading ? 'invisible' : ''}`}
             src={src}
             alt={alt}
+            onLoad={handleImageLoad}
             loading="lazy"
           />
         </div>

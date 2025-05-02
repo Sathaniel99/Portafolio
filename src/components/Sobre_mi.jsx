@@ -38,12 +38,29 @@ export function Sobre_mi() {
     return (
         <React.Fragment>
             <style>{`
+                .bg-violet{
+                    background-color: #663399;
+                }
+                .bg-orange{
+                    background-color:rgb(227, 76, 38);
+                }
+                .bg-blue{
+                    background-color:rgb(53, 114, 165);
+                }
+                .bg-green-grey{
+                    background-color:rgb(39, 99, 49);
+                }
                 #uci-popover, #habana-popover, #inotu-popover{
                     width: 10rem;
                     height: 8rem;
                     display: flex;
                 }
                 .web-container-sagpn{
+                    max-width: 38rem;
+                    height: 20rem;
+                    display: flex;
+                }
+                .web-container-contador{
                     max-width: 38rem;
                     height: 20rem;
                     display: flex;
@@ -63,20 +80,20 @@ export function Sobre_mi() {
             <p className="text-start fs-5 lh-sm">
                 Mi nombre es <span className="user-select-all">Adán Luis Quincoces Escalona</span>, tengo 25 años, soy graduado de <span className="user-select-all">Ingeniero en Ciencias Informáticas</span> de la 
                 <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={uciPopover}>
-                    <a className="text-decoration-none text-primary-emphasis" href="https://www.uci.cu/"> Universidad de las Ciencias Informáticas (UCI)</a>
+                    <a className="text-decoration-none text-primary-emphasis fw-bold" href="https://www.uci.cu/"> Universidad de las Ciencias Informáticas (UCI)</a>
                 </OverlayTrigger> en 
                 <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={habanaPopover}>
-                    <a className="text-decoration-none text-primary-emphasis" href="https://www.bing.com/maps?q=La%20Habana&amp;satid=id.sid%3A3ca5066a-a331-c1b3-135f-1fde36da55db&amp;FORM=KC2MAP"> La Habana</a>
+                    <a className="text-decoration-none text-primary-emphasis fw-bold" href="https://www.bing.com/maps?q=La%20Habana&amp;satid=id.sid%3A3ca5066a-a331-c1b3-135f-1fde36da55db&amp;FORM=KC2MAP"> La Habana</a>
                 </OverlayTrigger>,
                 donde culminé mis estudios en julio de 2024. Previo a mi formación universitaria, me gradué del Instituto Preuniversitario de Veguitas Granma (I.P.U. Abel Santamaría Cuadrado) en junio de 2017.
             </p>
             <p className="text-start fs-5 lh-sm">
                 Actualmente trabajo como Director de Informática en el 
                 <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={inotuPopover}>
-                    <a className="text-decoration-none text-primary-emphasis" href="https://www.inotu.gob.cu/es"> Insituto Nacional de Ordenamiento Territorial y Urbanismo <strong>(INOTU)</strong></a>
+                    <a className="text-decoration-none text-primary-emphasis fw-bold" href="https://www.inotu.gob.cu/es"> Insituto Nacional de Ordenamiento Territorial y Urbanismo <strong>(INOTU)</strong></a>
                 </OverlayTrigger>, ubicado en Boyeros, La Habana. En esta posición, complemento el desarrollo y gestión del proyecto :
                 <OverlayTrigger trigger={['hover', 'focus', 'click']} placement="top" overlay={sagpnPopover}>
-                    <p className="text-decoration-none text-primary-emphasis cursor-pointer text-wrap text-break">- Sistema Automatizado de Gestión y Control <strong>(SAGC)</strong></p>
+                    <p className="text-decoration-none text-primary-emphasis fw-bold cursor-pointer text-wrap text-break">- Sistema Automatizado de Gestión y Control <strong>(SAGC)</strong></p>
                 </OverlayTrigger>
                 Donde me encargo de aspectos relacionados con la Ciberseguridad, Modularidad, Diseño de Interfaces y Mapas Catastrales.
             </p>
