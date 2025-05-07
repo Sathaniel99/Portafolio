@@ -116,6 +116,7 @@ export function Proyectos() {
           technologies: [
               { name: "HTML", color: "bg-orange" },
               { name: "CSS", color: "bg-violet" },
+              { name: "JavaScript", color: "bg-warning" },
               { name: "TypeScript", color: "bg-primary" },
           ]
         },
