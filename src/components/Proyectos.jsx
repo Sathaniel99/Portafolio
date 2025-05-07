@@ -108,7 +108,17 @@ export function Proyectos() {
                 { name: "JavaScript", color: "bg-warning" },
                 { name: "Bootstrap", color: "bg-violet" }
             ]
-        }
+        },
+        {
+          name: "Mapa de Cuba",
+          description: "Mapa cubano descriptivo por provincias.",
+          repoUrl: "https://github.com/Sathaniel99/cuba-maps",
+          technologies: [
+              { name: "HTML", color: "bg-orange" },
+              { name: "CSS", color: "bg-violet" },
+              { name: "TypeScript", color: "bg-primary" },
+          ]
+        },
       ];
 
   return (
