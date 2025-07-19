@@ -8,20 +8,20 @@ import { Spinner } from "react-bootstrap";
 import { useState } from "react";
 
 const ProjectCard = ({ 
-  name, 
-  description, 
-  repoUrl, 
-  popoverContent, 
-  technologies 
+  name,
+  description,
+  img,
+  repoUrl,
+  technologies
 }) => {
   const popover = (
-    <Popover id={`${name.toLowerCase()}-popover`} className="shadow rounded">
+    <Popover id={`${img}-popover`} className="shadow rounded">
       <Popover.Body>
         <img 
           className="object-fit-contain m-auto h-100 w-100" 
-          src={`/Portafolio/${name.toLowerCase()}.png`} 
+          src={`/Portafolio/${img}.png`} 
           alt={name}
-          id={`img-${name.toLowerCase()}`}
+          id={`img-${img}`}
         />
       </Popover.Body>
     </Popover>
@@ -58,7 +58,7 @@ const ProjectCard = ({
         {technologies.map((tech, index) => (
           <div key={index} className="d-flex gap-1 align-items-center">
             <span 
-              className={`rounded-circle border border-1 border-secondary-subtle shadow ${tech.color}`}
+              className={`rounded-circle border border-1 border-secondary-subtle glow-pulse ${tech.color}`}
               style={{ 
                 width: '.8rem', 
                 height: '.8rem'
@@ -80,6 +80,7 @@ export function Proyectos() {
     const projects = [
         {
             name: "SAGPN",
+            img: "sagpn",
             description: "\"Sistema Automatizado de Gestión de Problemas y Necesidades\" de una empresa mediante la creacion de Tickets dirigido principalmente a temas Informáticos-Técnicos.",
             repoUrl: "https://github.com/Sathaniel99/SAGPN",
             technologies: [
@@ -92,14 +93,17 @@ export function Proyectos() {
         },
         {
             name: "Contador",
+            img: "contador",
             description: "Un contador simple para dos variables (P y S).",
             repoUrl: "https://github.com/Sathaniel99/Contador",
             technologies: [
-                { name: "Python", color: "bg-blue" }
+                { name: "Python", color: "bg-blue" },
+                { name: "Qt", color: "bg-success" },
             ]
         },
         {
             name: "PassGen",
+            img: "passgen",
             description: "Generador de Contraseñas Seguras con Toast.",
             repoUrl: "https://github.com/Sathaniel99/PassGen",
             technologies: [
@@ -111,6 +115,7 @@ export function Proyectos() {
         },
         {
           name: "Mapa de Cuba",
+          img: "mapa-cuba",
           description: "Mapa cubano descriptivo por provincias.",
           repoUrl: "https://github.com/Sathaniel99/cuba-maps",
           technologies: [
@@ -118,6 +123,19 @@ export function Proyectos() {
               { name: "CSS", color: "bg-violet" },
               { name: "JavaScript", color: "bg-warning" },
               { name: "TypeScript", color: "bg-primary" },
+              { name: "React", color: "bg-cyan" },
+          ]
+        },
+        {
+          name: "Tablero Yu-Gi-Oh!",
+          img: "yugi-field",
+          description: "Estilo visual de cada tablero de Yu-Gi-Oh!, se puede visualizar cada versión de este tipo.",
+          repoUrl: "https://sathaniel99.github.io/fields-yugioh",
+          technologies: [
+              { name: "HTML", color: "bg-orange" },
+              { name: "CSS", color: "bg-violet" },
+              { name: "JavaScript", color: "bg-warning" },
+              { name: "Bootstrap", color: "bg-violet"}
           ]
         },
       ];
@@ -153,6 +171,7 @@ export function Proyectos() {
           <ProjectCard
             key={index}
             name={project.name}
+            img={project.img}
             description={project.description}
             repoUrl={project.repoUrl}
             technologies={project.technologies}

@@ -38,17 +38,57 @@ export function Sobre_mi() {
     return (
         <React.Fragment>
             <style>{`
+                .glow-pulse{
+                    animation: glow-pulse 2s infinite;
+                    }
+                @keyframes glow-pulse{
+                    0{
+                        box-shadow: 0 0 0px 0px gray;
+                    }
+                    50%{
+                        box-shadow: 0 0 10px 1px gray;
+                    }
+                    100%{
+                        box-shadow: 0 0 0px 0px gray;
+                    }
+                }
+                .bg-primary{
+                    --shadow: var(--bs-primary-rgb);
+                }
+                .bg-secondary{
+                    --shadow: var(--bs-secondary-rgb);
+                }
+                .bg-success{
+                    --shadow: var(--bs-success-rgb);
+                }
+                .bg-danger{
+                    --shadow: var(--bs-danger-rgb);
+                }
+                .bg-warning{
+                    --shadow: var(--bs-warning-rgb);
+                }
+                .bg-info{
+                    --shadow: var(--bs-info-rgb);
+                }
                 .bg-violet{
                     background-color: #663399;
+                    --shadow: var(102, 51, 153);
+                }
+                .bg-cyan{
+                    background-color: #12a3a8ff;
+                    --shadow: var(18, 163, 168);
                 }
                 .bg-orange{
                     background-color:rgb(227, 76, 38);
+                    --shadow: var(227, 76, 38);
                 }
                 .bg-blue{
                     background-color:rgb(53, 114, 165);
+                    --shadow: var(53, 114, 165);
                 }
                 .bg-green-grey{
                     background-color:rgb(39, 99, 49);
+                    --shadow: var(39, 99, 49);
                 }
                 #uci-popover, #habana-popover, #inotu-popover{
                     width: 10rem;
