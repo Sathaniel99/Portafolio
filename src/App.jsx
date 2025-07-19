@@ -18,13 +18,15 @@ import "./App.css";
 
 export function App() {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const [isLoading, setIsLoading] = useState(true);
-  const handleImageLoad = () => {
-    setIsLoading(false);
-  };
+  const handleImageLoad = () => setIsLoading(false);
+
+  // Nuevo estado y handler para la segunda imagen
+  const [isLoadingSideImage, setIsLoadingSideImage] = useState(true);
+  const handleSideImageLoad = () => setIsLoadingSideImage(false);
 
   return (
     <div className="high-card border border-1 border-secondary overflow-hidden position-relative m-auto w-100 rounded shadow bg-body d-flex">
@@ -42,7 +44,7 @@ export function App() {
         </Offcanvas.Header>
         <Offcanvas.Body>
         <Nav variant="pills" className="flex-column h-100 p-1 align-items-center">
-              <Nav.Item className="w-100 pb-2 p-4">
+              <Nav.Item className="w-100 pb-2 p-4 position-relative">
                 {isLoading && (
                   <div className="position-absolute top-50 start-50 translate-middle">
                     <Spinner animation="border" role="status">
@@ -52,10 +54,10 @@ export function App() {
                 )}
                 <img
                   src="/Portafolio/user.webp"
-                  roundedCircle
-                  className={`img-fluid shadow border border-2 border-bg-secondary-subtle p-1 ${isLoading ? 'invisible' : ''}`}
+                  className={`img-fluid shadow border border-2 border-bg-secondary-subtle rounded-circle p-1 ${isLoading ? 'invisible' : ''}`}
                   onLoad={handleImageLoad}
                   loading="lazy"
+                  alt="Usuario"
                 />
               </Nav.Item>
               <Nav.Item>
@@ -93,13 +95,22 @@ export function App() {
       
         <Row className="py-4 h-100 w-100 m-auto">
           <Col sm={4} className="border-end border-1 border-secondary h-100 d-none d-md-block" id="sideLeftBar">
-            
             <Nav variant="pills" className="flex-column h-100 p-1 gap-2">
-              <Nav.Item className="w-100 pb-2 p-4">
+              <Nav.Item className="w-100 pb-2 p-4 position-relative">
+                {isLoadingSideImage && (
+                  <div className="position-absolute top-50 start-50 translate-middle">
+                    <Spinner animation="border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                  </div>
+                )}
                 <Image
                   src="/Portafolio/user.webp"
                   roundedCircle
-                  className="img-fluid shadow border border-2 border-bg-secondary-subtle p-1"
+                  className={`img-fluid shadow border border-2 border-bg-secondary-subtle rounded-circle p-1 ${isLoadingSideImage ? 'invisible' : ''}`}
+                  onLoad={handleSideImageLoad}
+                  loading="lazy"
+                  alt="Usuario"
                 />
               </Nav.Item>
               <Nav.Item>
