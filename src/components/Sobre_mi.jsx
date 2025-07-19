@@ -1,6 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Popover, OverlayTrigger } from "react-bootstrap";
+import Tooltip from 'react-bootstrap/Tooltip';
+import { BiDownload } from "react-icons/bi";
 
 export function Sobre_mi() {
     const uciPopover = (
@@ -34,6 +36,17 @@ export function Sobre_mi() {
                 </Popover.Body>
             </Popover>
         );
+    
+    const function_Download = () => {
+        const externalUrl = '/Portafolio/CV - Adán Luis Quincoces Escalona.doc';
+        const link = document.createElement('a');
+        link.href = externalUrl;
+        link.download = 'CV - Adán Luis Quincoces Escalona';
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     return (
         <React.Fragment>
@@ -115,6 +128,11 @@ export function Sobre_mi() {
                     padding: 0.5rem;
                 }
             `}</style>
+            <OverlayTrigger placement="top" overlay={<Tooltip>{"Descargar CV"}</Tooltip>}>
+                <button className="btn btn-outline-secondary py-2 d-flex align-items-center gap-2 position-absolute end-0" onClick={function_Download}>
+                    <BiDownload class="fs-5"/>
+                </button>
+            </OverlayTrigger>
             <h3 className="mt-3 w-100 text-center">Sobre Mí</h3>
             <hr className="w-100 border border-1 border-secondary" />
             <p className="text-start fs-5 lh-sm">

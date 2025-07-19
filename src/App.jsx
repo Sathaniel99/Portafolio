@@ -146,7 +146,7 @@ export function App() {
           </Col>
           <Col className="h-100">
             <Tab.Content className="overflow-auto h-100">
-              <Tab.Pane eventKey="about" className="h-100 text-center">
+              <Tab.Pane eventKey="about" className="h-100 text-center position-relative">
                 <Sobre_mi />
               </Tab.Pane>
               <Tab.Pane
