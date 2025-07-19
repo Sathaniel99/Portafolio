@@ -19,7 +19,7 @@ const ProjectCard = ({
       <Popover.Body>
         <img 
           className="object-fit-contain m-auto h-100 w-100" 
-          src={`/Portafolio/${img}.png`} 
+          src={`/Portafolio/${img}.webp`} 
           alt={name}
           id={`img-${img}`}
         />
@@ -159,7 +159,7 @@ export function Proyectos() {
                 <img className={`img-fluid rounded-2 shadow border border-1 border-secondary ${isLoading ? 'invisible' : ''}`}
                 onLoad={handleImageLoad}
                 loading="lazy"
-                src="/Portafolio/website.png" alt="Web SAGC"/>
+                src="/Portafolio/website.webp" alt="Web SAGC"/>
         </div>
         <p className="fw-light fst-italic fs-6 lh-1 mt-1">Web en desarrollo.</p>
         <p className="">

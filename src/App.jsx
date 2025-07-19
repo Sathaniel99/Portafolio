@@ -51,7 +51,7 @@ export function App() {
                   </div>
                 )}
                 <img
-                  src="/Portafolio/user.jpg"
+                  src="/Portafolio/user.webp"
                   roundedCircle
                   className={`img-fluid shadow border border-2 border-bg-secondary-subtle p-1 ${isLoading ? 'invisible' : ''}`}
                   onLoad={handleImageLoad}
@@ -97,7 +97,7 @@ export function App() {
             <Nav variant="pills" className="flex-column h-100 p-1 gap-2">
               <Nav.Item className="w-100 pb-2 p-4">
                 <Image
-                  src="/Portafolio/user.jpg"
+                  src="/Portafolio/user.webp"
                   roundedCircle
                   className="img-fluid shadow border border-2 border-bg-secondary-subtle p-1"
                 />
