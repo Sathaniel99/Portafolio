@@ -6,6 +6,8 @@ import { useState, useRef } from "react";
 import { FiSend } from "react-icons/fi";
 import { MdEmail, MdTextFields } from "react-icons/md";
 import { FaRegCircleXmark } from "react-icons/fa6";
+// Utiles
+import { openNewTab } from "@/components/utils";
 
 export function Sugerencias() {
     // hooks
@@ -18,11 +20,11 @@ export function Sugerencias() {
     const identRef = useRef<HTMLInputElement>(null);
 
     // constantes
-    const inputField = isChecked ? "email" : "text"
-    const icon = isChecked ? <MdEmail /> : <MdTextFields />
-    const labelField = isChecked ? "Email:" : "Forma de identificarlo:"
-    const msgTooltip = isChecked ? "No usar email." : "Usar email."
-    const placeholder = isChecked ? "ejemplo: usuario@dominio.com..." : "ejemplo: Roberto, Manuel, Raúl Fonseca..."
+    const inputField = isChecked ? "email" : "text";
+    const icon = isChecked ? <MdEmail /> : <MdTextFields />;
+    const labelField = isChecked ? "Email:" : "Forma de identificarlo:";
+    const msgTooltip = isChecked ? "No usar email." : "Usar email.";
+    const placeholder = isChecked ? "ejemplo: usuario@dominio.com..." : "ejemplo: Roberto, Manuel, Raúl Fonseca...";
 
 
     // Funciones
@@ -36,17 +38,30 @@ export function Sugerencias() {
         const msge = msgRef.current?.value;
         const ident = identRef.current?.value;
 
-        if (!msge || !ident) {
+        if (!msge && !ident) {
+            setClassInput("border-red-600");
+            setClassTextArea("border-red-600");
             toast.error(`Por favor, completa todos los campos.`);
             return;
         }
-
+        else if (!ident) {
+            setClassInput("border-red-600");
+            toast.error(`Por favor, completa el campo de ${identRef.current?.type === 'email' ? 'Email' : 'Identificación'}.`);
+            return;
+        }
+        else if (!msge) {
+            setClassInput("border-red-600");
+            toast.error(`Por favor, completa el campo de sugerencias.`);
+            return;
+        }
+        setClassInput("border-green-600");
+        setClassTextArea("border-green-600");        
         const encodedMessage = encodeURIComponent(msge);
         const encodedIdent = encodeURIComponent(ident);
-
+        
         const url = `https://wa.me/5491112345678?text=Hola%20soy%20${encodedIdent},%20escribo%20por%20mi%20sugerencia:%20${encodedMessage}`;
-
-        window.open(url, "_blank", "noopener,noreferrer");
+        
+        openNewTab(url, 'aplicación', "Whatsapp");
 
     }
 
@@ -54,23 +69,33 @@ export function Sugerencias() {
     // Email
     const handleEmailValidation = (e: React.ChangeEvent<HTMLInputElement>) => {
         const email = e.target.value
+        if (email == "") {
+            setInputText("Campo vacío.")
+            return;
+        }
         if (email.includes("@") && email.split("@")[1].includes(".") && email.split("@")[1].split(".")[1].length > 1) {
             setClassInput("border-green-600");
             setInputText("");
         }
         else {
             setClassInput("border-red-600");
-            setInputText("Email no válido.");
+            setInputText(`Email no válido.`);
         }
     }
     // Identidad
     const handleIdentValidation = (e: React.ChangeEvent<HTMLInputElement>) => {
         const text = e.target.value
+        if (text == "") {
+            setInputText("Campo vacío.")
+            return;
+        }
         if (text != "" && text.length > 2) {
             setClassInput("border-green-600")
+            setInputText("");
         }
         else {
             setClassInput("border-red-600")
+            setInputText("Identificador no válido.");
         }
     }
     const validation = isChecked ? handleEmailValidation : handleIdentValidation
@@ -88,9 +113,11 @@ export function Sugerencias() {
     }
     return (
         <>
-            <h1 className="text-center text-3xl my-2 font-bold">Sugerencias</h1>
-            <hr className="border-neutral-500" />
-            <div className="grid w-full mt-5 gap-3">
+            <div>
+                <h1 className="text-center text-3xl my-2 font-bold">Sugerencias</h1>
+                <hr className="border-neutral-500" />
+            </div>
+            <div className="flex-1 flex flex-col w-full overflow-y-auto scrollbar-hide pt-5 px-2 gap-3">
                 <div className="flex flex-row justify-between mb-1">
                     <Label htmlFor="ident">{labelField}</Label>
                     {inputText != "" && (<Label className="text-red-600 px-3 rounded flex flex-row items-center gap-2"><FaRegCircleXmark /> {inputText}</Label>)}
@@ -113,11 +140,11 @@ export function Sugerencias() {
                         </Tooltip>
                     </InputGroupAddon>
                 </InputGroup>
-                <div className="h-2">
+                <div className="h-4">
                     {textAreaText != "" && (<Label className="text-red-600 px-3 rounded flex flex-row items-center gap-2"><FaRegCircleXmark /> {textAreaText}</Label>)}
                 </div>
                 <Textarea ref={msgRef} id="msg" className={`h-50 ${classTextArea}`} cols={5} onChange={handleTextAreaValidation} placeholder="Sugiera en este contenedor de texto..."></Textarea>
-                
+
                 <div className="flex flex-col justify-center mt-5 gap-2">
                     <Button className="mx-auto" onClick={handleSendMessage}><FiSend /> Enviar</Button>
                     <em className="text-center text-sm">Enviar via Whatsapp</em>

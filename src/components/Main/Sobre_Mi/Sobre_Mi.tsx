@@ -29,10 +29,12 @@ export function Sobre_Mi() {
     };
 
     return (
-        <div className="h-[75vh] overflow-auto scrollbar-hide relative">
-            <div className="h-full">
+        <>
+            <div>
                 <h1 className="text-center text-3xl my-2 font-bold">Sobre Mi</h1>
                 <hr className="border-neutral-500" />
+            </div>
+            <div className="flex-1 overflow-y-auto scrollbar-hide px-2">
                 <p className="text-start fs-5 lh-sm my-3">
                     Mi nombre es{" "}
                     <span className="select-all">{PERSONAL_INFO.name}</span>
@@ -50,7 +52,7 @@ export function Sobre_Mi() {
                         </TooltipTrigger>
                         <TooltipContent>
                             <div className="w-60 h-45">
-                                <Spinner_Img img={"/INOTU.webp"} altImg={"Logo INOTU"}/>
+                                <Spinner_Img img={"INOTU.webp"} altImg={"Logo INOTU"} />
                             </div>
                         </TooltipContent>
                     </Tooltip>
@@ -61,7 +63,7 @@ export function Sobre_Mi() {
                         </TooltipTrigger>
                         <TooltipContent>
                             <div className="w-60 h-45">
-                                <Spinner_Img img={"/website.webp"} altImg={"Web SAGC"} />
+                                <Spinner_Img img={"website.webp"} altImg={"Web SAGC"} />
                             </div>
                         </TooltipContent>
                     </Tooltip><br />
@@ -89,8 +91,8 @@ export function Sobre_Mi() {
                         {isDownloadingDoc ? <Spinner /> : <MdDownload />} Descargar <FaRegFileWord />
                     </Button>
                 </div>
-
             </div>
-        </div>
+
+        </>
     )
 }

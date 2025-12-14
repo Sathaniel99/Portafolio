@@ -7,6 +7,6 @@ import { Toaster } from './components/ui/index'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
-    <Toaster position='top-right'/>
+    <Toaster position='top-right' closeButton />
   </StrictMode>,
 )

@@ -15,7 +15,7 @@ export function Main() {
         S: <Sugerencias />
     }
     return (
-        <div className="w-full h-full px-3 md:ps-3 md:pe-0 py-4 overflow-hidden relative">
+        <div className="w-full h-full min-h-0 overflow-hidden px-3 md:ps-3 md:pe-0 py-4 relative flex flex-col">
             <Theme />
             <Aside_movil />
             {windows[stateWindow as keyof typeof windows] || windows.SM}

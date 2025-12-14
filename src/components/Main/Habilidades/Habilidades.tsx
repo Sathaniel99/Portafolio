@@ -7,7 +7,7 @@ const habilidades: Categoria[] = [
         tecnologias: [
             {
                 text: "HTML5",
-                img: "/HTML5.webp",
+                img: "HTML5.webp",
                 altImg: "HTML5",
                 url: "https://developer.mozilla.org/es/docs/Web/HTML",
                 ariaLabel: "Más información sobre HTML5",
@@ -15,7 +15,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "CSS3",
-                img: "/CSS3.webp",
+                img: "CSS3.webp",
                 altImg: "CSS3",
                 url: "https://developer.mozilla.org/es/docs/Web/CSS",
                 ariaLabel: "Más información sobre CSS3",
@@ -23,7 +23,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "JavaScript",
-                img: "/JS.webp",
+                img: "JS.webp",
                 altImg: "JavaScript",
                 url: "https://developer.mozilla.org/es/docs/Web/JavaScript",
                 ariaLabel: "Más información sobre JavaScript",
@@ -31,7 +31,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "Bootstrap 5.3",
-                img: "/Bootstrap.webp",
+                img: "Bootstrap.webp",
                 altImg: "Bootstrap 5.3",
                 url: "https://getbootstrap.com/",
                 ariaLabel: "Más información sobre Bootstrap 5.3",
@@ -39,7 +39,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "Tailwind CSS",
-                img: "/Tailwind_CSS.webp",
+                img: "Tailwind_CSS.webp",
                 altImg: "Tailwind CSS",
                 url: "https://v2.tailwindcss.com/",
                 ariaLabel: "Más información sobre Tailwind CSS",
@@ -52,7 +52,7 @@ const habilidades: Categoria[] = [
         tecnologias: [
             {
                 text: "Python",
-                img: "/python.webp",
+                img: "python.webp",
                 altImg: "Python",
                 url: "https://www.python.org/",
                 ariaLabel: "Más información sobre Python",
@@ -60,7 +60,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "JAVA",
-                img: "/java.webp",
+                img: "java.webp",
                 altImg: "JAVA",
                 url: "https://www.java.com/",
                 ariaLabel: "Más información sobre JAVA",
@@ -73,7 +73,7 @@ const habilidades: Categoria[] = [
         tecnologias: [
             {
                 text: "Django",
-                img: "/django.webp",
+                img: "django.webp",
                 altImg: "Django",
                 url: "https://www.djangoproject.com/",
                 ariaLabel: "Más información sobre Django",
@@ -81,7 +81,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "React",
-                img: "/react.webp",
+                img: "react.webp",
                 altImg: "React",
                 url: "https://es.react.dev/",
                 ariaLabel: "Más información sobre React",
@@ -89,7 +89,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "Nextjs",
-                img: "/nextjs.svg",
+                img: "nextjs.svg",
                 altImg: "Nextjs",
                 url: "https://nextjs.org/",
                 ariaLabel: "Más información sobre Nextjs",
@@ -97,7 +97,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "FastApi",
-                img: "/fastapi.webp",
+                img: "fastapi.webp",
                 altImg: "FastApi",
                 url: "https://fastapi.tiangolo.com/",
                 ariaLabel: "Más información sobre FastApi",
@@ -105,7 +105,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "Flask",
-                img: "/flask.webp",
+                img: "flask.webp",
                 altImg: "Flask",
                 url: "https://flask-es.readthedocs.io/",
                 ariaLabel: "Más información sobre Flask",
@@ -118,7 +118,7 @@ const habilidades: Categoria[] = [
         tecnologias: [
             {
                 text: "PostgreSQL",
-                img: "/postgreesql.webp",
+                img: "postgreesql.webp",
                 altImg: "PostgreSQL",
                 url: "https://www.postgresql.org/",
                 ariaLabel: "Más información sobre PostgreSQL",
@@ -126,7 +126,7 @@ const habilidades: Categoria[] = [
             },
             {
                 text: "SQLite",
-                img: "/sqlite.webp",
+                img: "sqlite.webp",
                 altImg: "SQLite",
                 url: "https://www.sqlite.org/",
                 ariaLabel: "Más información sobre SQLite",
@@ -142,7 +142,7 @@ const habilidades: Categoria[] = [
                 ariaLabel: "Más información sobre Github",
                 text: "Github",
                 altImg: "Github",
-                img: "/github.webp",
+                img: "github.webp",
                 bgClass: "bg-neutral-600/20 dark:bg-neutral-900",
             },
             {
@@ -150,7 +150,7 @@ const habilidades: Categoria[] = [
                 ariaLabel: "Más información sobre Vite",
                 text: "Vite",
                 altImg: "Vite",
-                img: "/vite.webp",
+                img: "vite.webp",
                 bgClass: "bg-gradient-to-l from-purple-600/50 dark:from-purple-600/30 via-yellow-600/50 dark:via-yellow-600/25 to-cyan-600/50 dark:to-cyan-950",
             }
         ]
@@ -162,9 +162,11 @@ const habilidades: Categoria[] = [
 export function Habilidades() {
     return (
         <>
-            <h1 className="text-center text-3xl my-2 font-bold">Habilidades</h1>
-            <hr className="border-neutral-500" />
-            <div className="h-[70vh] overflow-auto scrollbar-hide">
+            <div>
+                <h1 className="text-center text-3xl my-2 font-bold">Habilidades</h1>
+                <hr className="border-neutral-500" />
+            </div>
+            <div className="flex-1 overflow-y-auto scrollbar-hide px-2">
                 {habilidades.map((habilidad) => (
                     <div key={habilidad.categoria} className="mt-8">
                         <h2 className="text-center text-2xl my-2 font-semibold">{habilidad.categoria}</h2>

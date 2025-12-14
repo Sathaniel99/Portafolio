@@ -15,6 +15,7 @@ export const Proyectos = () => {
     const [error, setError] = useState<string | null>(null);
     useEffect(() => {
         const apiKey = import.meta.env.VITE_API_KEY_PRIV;
+        console.log(apiKey)
         const fetchRepos = async () => {
             try {
                 const response = await axios.get(
@@ -67,10 +68,11 @@ export const Proyectos = () => {
 
     return (
         <>
-            <h1 className="text-center text-3xl my-2 font-bold">Proyectos</h1>
-            <hr className="border-neutral-500" />
-            <Separator />
-            <div className="h-[70vh] overflow-auto scrollbar-hide">
+            <div>
+                <h1 className="text-center text-3xl my-2 font-bold">Proyectos</h1>
+                <hr className="border-neutral-500" />
+            </div>
+            <div className="flex-1 overflow-y-auto scrollbar-hide px-2">
                 {repos.map((repo, index) => (
                     <Card_proyect key={index} repo={repo} />
                 ))}
