@@ -13,7 +13,7 @@ jobs:
 
       - name: Obtener repositorios
         run: |
-          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          curl -H "Authorization: token ${{ secrets.PORTAFOLIO_TOKEN }}" \
           https://api.github.com/user/repos?type=owner > public/repos.json
 
       - name: Commit y push

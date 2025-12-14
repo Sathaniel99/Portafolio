@@ -16,7 +16,7 @@ export const Proyectos = () => {
     useEffect(() => {
         const fetchRepos = async () => {
             try {
-                const response = await axios.get("/repos.json");
+                const response = await axios.get("repos.json");
                 setRepos(response.data);
                 console.log(response.data);
             } catch (err) {
