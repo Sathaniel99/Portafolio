@@ -1,6 +1,6 @@
 // Componentes
 import { Card_proyect, type Repo } from "./index"
-import { Separator, Spinner, toast } from "@/components/ui/index";
+import { Separator, Spinner } from "@/components/ui/index";
 // Hooks
 import { useState, useEffect } from "react";
 // Utiles
@@ -14,22 +14,9 @@ export const Proyectos = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     useEffect(() => {
-        const token = import.meta.env.VITE_API_KEY_PRIV;
-        if (!token) {
-            toast.error("Error de autenticación. No existe token para Github.")
-          throw new Error("No se encontró el token de GitHub.");
-        }
         const fetchRepos = async () => {
             try {
-                const response = await axios.get(
-                    "https://api.github.com/user/repos?type=owner",
-                    {
-                        headers: {
-                            Authorization: token,
-                            Accept: 'application/vnd.github.v3+json',
-                        },
-                    }
-                );
+                const response = await axios.get("/repos.json");
                 setRepos(response.data);
                 console.log(response.data);
             } catch (err) {
