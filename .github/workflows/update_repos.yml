@@ -2,7 +2,7 @@ name: Actualizar repositorios
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Ejecuta cada día a medianoche
+    - cron: '0 */6 * * *' # Cada 6 horas
   workflow_dispatch:     # Permite ejecutarlo manualmente
 
 jobs:
