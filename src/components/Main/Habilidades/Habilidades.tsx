@@ -169,8 +169,8 @@ export function Habilidades() {
             <div className="flex-1 overflow-y-auto scrollbar-hide px-2">
                 {habilidades.map((habilidad) => (
                     <div key={habilidad.categoria} className="mt-8">
-                        <h2 className="text-center text-2xl my-2 font-semibold">{habilidad.categoria}</h2>
-                        <div className="flex flex-wrap justify-center gap-6 bg-neutral-300 dark:bg-neutral-800 border border-neutral-600 px-2 py-5 rounded-md">
+                        <h2 className="text-center text-2xl my-2 font-semibold border-b border-neutral-600">{habilidad.categoria}</h2>
+                        <div className="flex flex-wrap justify-center gap-6 px-2 py-5 rounded-md">
                             {habilidad.tecnologias.map((tecnologia) => (
                                 <Card_habilidad key={`${habilidad.categoria}-${tecnologia.text}`} url={tecnologia.url}
                                     altImg={tecnologia.altImg} ariaLabel={tecnologia.ariaLabel} img={tecnologia.img}
