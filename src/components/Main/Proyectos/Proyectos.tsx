@@ -1,6 +1,6 @@
 // Componentes
 import { Card_proyect, type Repo } from "./index"
-import { Separator, Spinner } from "@/components/ui/index";
+import { Separator, Spinner, toast } from "@/components/ui/index";
 // Hooks
 import { useState, useEffect } from "react";
 // Utiles
@@ -14,19 +14,24 @@ export const Proyectos = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     useEffect(() => {
-        const apiKey = import.meta.env.VITE_API_KEY_PRIV;
-        console.log(apiKey)
+        const token = import.meta.env.VITE_API_KEY_PRIV;
+        if (!token) {
+            toast.error("Error de autenticación. No existe token para Github.")
+          throw new Error("No se encontró el token de GitHub.");
+        }
         const fetchRepos = async () => {
             try {
                 const response = await axios.get(
-                    "https://api.github.com/user/repos",
+                    "https://api.github.com/user/repos?type=owner",
                     {
                         headers: {
-                            Authorization: apiKey,
+                            Authorization: token,
+                            Accept: 'application/vnd.github.v3+json',
                         },
                     }
                 );
                 setRepos(response.data);
+                console.log(response.data);
             } catch (err) {
                 setError(
                     axios.isAxiosError(err)
@@ -61,6 +66,7 @@ export const Proyectos = () => {
                 <div className="flex flex-row items-center justify-center gap-2 mt-6 w-full">
                     <FaRegCircleXmark className="text-red-600 size-7" />
                     <h1 className="text-center text-red-600 text-lg">Ha ocurrido un error</h1>
+                    <p className="text-red-600">{error}</p>
                 </div>
             </div>
         </>
@@ -73,8 +79,8 @@ export const Proyectos = () => {
                 <hr className="border-neutral-500" />
             </div>
             <div className="flex-1 overflow-y-auto scrollbar-hide px-2">
-                {repos.map((repo, index) => (
-                    <Card_proyect key={index} repo={repo} />
+                {repos.map((repo) => (
+                    <Card_proyect key={repo.id} repo={repo} />
                 ))}
             </div>
         </>
