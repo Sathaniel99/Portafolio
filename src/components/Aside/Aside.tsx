@@ -1,4 +1,4 @@
-import { Avatar_own, Buttons_page } from "./index"
+import { Avatar_own, Buttons_page, Contacto } from "./index"
 
 export function Aside() {
     return (
@@ -6,6 +6,7 @@ export function Aside() {
             <Avatar_own />
             <hr className="border-neutral-500 my-5" />
             <Buttons_page />
+            <Contacto></Contacto>
         </div>
     )
 }

@@ -1,12 +1,13 @@
 // Componentes
 import { Card_proyect, type Repo } from "./index"
-import { Separator, Spinner } from "@/components/ui/index";
+import { Separator } from "@/components/ui/index";
 // Hooks
 import { useState, useEffect } from "react";
 // Utiles
 import axios from "axios";
 // Iconos
 import { FaRegCircleXmark } from "react-icons/fa6";
+import { Skeleton } from "@/components/ui/skeleton";
 
 
 export const Proyectos = () => {
@@ -18,7 +19,6 @@ export const Proyectos = () => {
             try {
                 const response = await axios.get("repos.json");
                 setRepos(response.data);
-                console.log(response.data);
             } catch (err) {
                 setError(
                     axios.isAxiosError(err)
@@ -37,10 +37,10 @@ export const Proyectos = () => {
         <>
             <h1 className="text-center text-3xl my-2 font-bold">Proyectos</h1>
             <hr className="border-neutral-500" />
-            <Separator />
-            <div className="flex flex-row items-center justify-center gap-2 my-6 w-full animate-pulse">
-                <Spinner className="text-blue-700 size-8" />
-                <h1 className="text-center text-lg">Cargando repositorios...</h1>
+            <div className="flex-1 overflow-y-auto scrollbar-hide px-2">
+                {Array(10).fill(0).map((_, index) => (
+                    <Skeleton key={index} className="min-h-52 w-full my-4"></Skeleton>
+                ))}
             </div>
         </>
     );

@@ -7,10 +7,12 @@ interface Spinner_Img_Props {
     altImg: string;
     imgClassName?: string;
     spinnerClassName?: string;
+    errorIconClassName?: string;
+    errorTextClassName?: string;
     onError?: () => void;
 }
 
-export function Spinner_Img({ img, altImg, imgClassName = "", spinnerClassName = "", onError }: Spinner_Img_Props) {
+export function Spinner_Img({ img, altImg, imgClassName = "", spinnerClassName = "", errorIconClassName = "", errorTextClassName = "", onError }: Spinner_Img_Props) {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
     const [hasError, setHasError] = useState(false);
 
@@ -22,8 +24,8 @@ export function Spinner_Img({ img, altImg, imgClassName = "", spinnerClassName =
     if (hasError) {
         return (
         <div className="text-center text-gray-500 flex flex-col items-center justify-center w-full h-full">
-            <TriangleAlertIcon className="size-6 text-red-600" />
-            <span className="text-center text-red-600 font-bold">Error al cargar la imagen</span>
+            <TriangleAlertIcon className={`size-6 text-red-600 ${errorIconClassName}`} />
+            <span className={`text-center text-red-600 font-bold ${errorTextClassName}`}>Error al cargar la imagen</span>
         </div>);
     }
 

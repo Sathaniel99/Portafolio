@@ -1,5 +1,6 @@
 // Componentes
-import { Button, Spinner } from "@/components/ui/index";
+import { Button } from "@/components/ui/index";
+import { Skeleton } from "@/components/ui/skeleton";
 // Hooks
 import { useEffect, useState } from "react";
 // Utiles
@@ -26,7 +27,7 @@ export function Card_proyect({ repo }: { repo: Repo }) {
     const [languages, setLanguages] = useState<Record<string, number>>({});
     const [loadingLanguages, setLoadingLanguages] = useState<boolean>(true);
     const fecha = _Fecha(repo.pushed_at);
-    const name = repo.name.replaceAll("_", " ").replace("Oh","Oh!")
+    const name = repo.name.replaceAll("_", " ").replace("Oh", "Oh!")
 
     useEffect(() => {
         const fetchLanguages = async () => {
@@ -46,35 +47,63 @@ export function Card_proyect({ repo }: { repo: Repo }) {
     }, [repo.languages_url]);
 
     return (
-        <div className="flex flex-col border border-neutral-500 rounded bg-neutral-300 dark:bg-neutral-900 p-2 my-4 transition-all shadow-md hover:shadow-slate-800 relative">
-            <div className="flex justify-between m-2">
-                <h1 className="flex flex-row gap-2 items-center text-2xl"><FaBook className="text-blue-800" /> {name}</h1>
-                <Button variant={"secondary"} onClick={() => (openNewTab(repo.html_url, "Repositorio"))}><FaArrowRightToBracket /> Repositorio</Button>
+        <div className="flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-700/10 p-4 my-4
+                transition-all duration-200 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-700 relative overflow-hidden">
+                    
+            {/* Header */}
+            <div className="flex justify-between items-center mb-3">
+                <h1 className="flex items-center gap-3 text-xl font-semibold text-neutral-800 dark:text-neutral-100">
+                    <FaBook className="text-blue-500 dark:text-blue-400" />
+                    {name}
+                </h1>
+                <Button
+                    variant={"secondary"}
+                    className="flex items-center gap-2 bg-neutral-100 dark:bg-neutral-700
+                       hover:bg-neutral-200 dark:hover:bg-neutral-600
+                       text-neutral-800 dark:text-neutral-100"
+                    onClick={() => openNewTab(repo.html_url, "Repositorio")}>
+                    <FaArrowRightToBracket />
+                    Repositorio
+                </Button>
             </div>
-            <hr className="border-neutral-500" />
-            <div className="m-2 min-h-12">
-                {repo.description || "Sin descripción aún."}
+
+            {/* Descripción */}
+            <div className="mb-3 px-1 text-neutral-700 dark:text-neutral-300 min-h-12">
+                {repo.description || <span className="text-neutral-400 dark:text-neutral-500">Sin descripción aún.</span>}
             </div>
-            <hr className="border-neutral-500" />
-            <div className="flex flex-row gap-3 flex-wrap p-2">
+
+            {/* Lenguajes */}
+            <div className="flex flex-wrap gap-2.5 px-1 py-3 border-t border-neutral-200 dark:border-neutral-700 overflow-hidden">
                 {loadingLanguages ? (
-                    <div className="flex flex-row gap-2 items-center">
-                        <Spinner /><span>Cargando lenguajes...</span>
+                    <div className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+                        {Array(5).fill(0).map((_, index) => (
+                            <div key={index} className="flex flex-row items-center gap-1.5">
+                                <Skeleton className="h-5 w-5 rounded-full animate-pulse bg-neutral-200 dark:bg-neutral-700" />
+                                <Skeleton className="h-4 w-24 animate-pulse bg-neutral-200 dark:bg-neutral-700" />
+                            </div>
+                        ))}
                     </div>
                 ) : Object.keys(languages).length > 0 ? (
                     Object.keys(languages).map((language) => (
-                        <div className="flex flex-row items-center gap-1" key={language}>
-                            <span className={`rounded-full w-3 h-3 border shadow-sm animate-pulse ${languages_colors_list[language as Language] || "bg-gray-700"}`}></span>
-                            <span>{language}</span>
+                        <div className="flex items-center gap-1.5 text-sm" key={language}>
+                            <span
+                                className={`rounded-full w-2.5 h-2.5 ${languages_colors_list[language as Language] || "bg-gray-400"}`}>
+                            </span>
+                            <span className="text-neutral-700 dark:text-neutral-300">{language}</span>
                         </div>
                     ))
                 ) : (
-                    <span>No se encontraron lenguajes</span>
+                    <span className="text-sm text-neutral-400 dark:text-neutral-500">No se encontraron lenguajes</span>
                 )}
             </div>
-            <div className="w-full flex">
-                <span className="ms-auto text-neutral-500 dark:text-neutral-400">Publicado: {fecha}</span>
+
+            {/* Fecha */}
+            <div className="flex justify-end pt-2 border-t border-neutral-200 dark:border-neutral-700">
+                <span className="text-xs text-neutral-500 dark:text-neutral-400">
+                    Publicado: {fecha}
+                </span>
             </div>
         </div>
+
     )
 }

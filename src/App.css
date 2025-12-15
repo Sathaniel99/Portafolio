@@ -1,13 +1,13 @@
 @import "@fontsource/inter";
 
-#root{
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100dvh;
-    max-width: 100%;
-    font-family: "Inter", "Inter Fallback";
+#root {
+  background: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  max-width: 100%;
+  font-family: "Inter", "Inter Fallback";
 }
 
 .scrollbar-hide::-webkit-scrollbar {

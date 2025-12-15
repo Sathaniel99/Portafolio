@@ -2,7 +2,7 @@
 import { useContext } from "react"
 import { WindowContext } from "../hooks/Context_api"
 // Componentes
-import { Aside_movil, Theme, Contacto, Habilidades, Proyectos, Sobre_Mi, Sugerencias } from "@/components/index"
+import { Aside_movil, Theme, Habilidades, Proyectos, Sobre_Mi, Sugerencias } from "@/components/index"
 
 export function Main() {
     const { stateWindow } = useContext(WindowContext);
@@ -11,7 +11,6 @@ export function Main() {
         SM: <Sobre_Mi />,
         H: <Habilidades />,
         P: <Proyectos />,
-        C: <Contacto />,
         S: <Sugerencias />
     }
     return (

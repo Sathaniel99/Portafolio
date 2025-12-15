@@ -8,7 +8,6 @@ const buttons = [
     { text: "Sobre Mi", state: "SM" },
     { text: "Habilidades", state: "H" },
     { text: "Proyectos", state: "P" },
-    { text: "Contacto", state: "C" },
     { text: "Sugerencias", state: "S" }
 ]
 

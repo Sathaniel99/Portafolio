@@ -1,6 +1,6 @@
 export { Aside } from "./Aside/Aside";
 export { Aside_movil } from "./Aside/Aside_movil";
-export { Contacto } from "./Main/Contacto/Contacto";
+export { Contacto } from "./Aside/Contacto";
 export { Habilidades } from "./Main/Habilidades/Habilidades";
 export { Proyectos } from "./Main/Proyectos/Proyectos";
 export { Sobre_Mi } from "./Main/Sobre_Mi/Sobre_Mi";
