@@ -17,7 +17,7 @@ export const Proyectos = () => {
     useEffect(() => {
         const fetchRepos = async () => {
             try {
-                const response = await axios.get("repos.json");
+                const response = await axios.get("https://api.github.com/users/Sathaniel99/repos?type=owner");
                 setRepos(response.data);
             } catch (err) {
                 setError(
