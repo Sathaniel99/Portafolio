@@ -1,5 +1,6 @@
 // Componentes
-import { Tooltip, TooltipContent, TooltipTrigger, Spinner_Img } from "@/components/ui/index";
+import { Spinner_Img } from "@/components/ui/index";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/animate-ui/components/animate/tooltip";
 // Utiles
 import type { ButtonRefProps } from ".";
 
@@ -7,7 +8,7 @@ import type { ButtonRefProps } from ".";
 export function ButtonRef({ url, text, ariaLabel, img }: ButtonRefProps) {
     return (
         <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
                 <a className={`text-blue-600 hover:text-blue-400 active:text-blue-800 fw-bold transition-all`} href={url} target="_blank" rel="noopener noreferrer" role="button" aria-label={ariaLabel}>{text}</a>
             </TooltipTrigger>
             <TooltipContent>

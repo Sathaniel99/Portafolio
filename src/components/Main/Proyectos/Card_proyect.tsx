@@ -9,6 +9,8 @@ import type { Repo } from ".";
 import axios from "axios";
 // Iconos
 import { FaBook, FaArrowRightToBracket } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
+import { Star } from "lucide-react";
 
 type Language = "Python" | "TeX" | "HTML" | "CSS" | "JavaScript" | "TypeScript" | "PowerShell" | "Shell";
 
@@ -48,8 +50,8 @@ export function Card_proyect({ repo }: { repo: Repo }) {
 
     return (
         <div className="flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-lg bg-white dark:bg-neutral-700/10 p-4 my-4
-                transition-all duration-200 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-700 relative overflow-hidden">
-                    
+                transition-all duration-200 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-700 relative overflow-hidden select-none">
+
             {/* Header */}
             <div className="flex justify-between items-center mb-3">
                 <h1 className="flex items-center gap-3 text-xl font-semibold text-neutral-800 dark:text-neutral-100">
@@ -98,7 +100,11 @@ export function Card_proyect({ repo }: { repo: Repo }) {
             </div>
 
             {/* Fecha */}
-            <div className="flex justify-end pt-2 border-t border-neutral-200 dark:border-neutral-700">
+            <div className="flex justify-between items-center pt-2 border-t border-neutral-200 dark:border-neutral-700">
+                <div className="flex items-center gap-1">
+                    { repo.stargazers_count == 0 ? <Star size={16}/> : <FaStar className="text-amber-300" /> }
+                    <span className="font-bold">{repo.stargazers_count}</span>
+                </div>
                 <span className="text-xs text-neutral-500 dark:text-neutral-400">
                     Publicado: {fecha}
                 </span>

@@ -7,4 +7,5 @@ export interface Repo{
     html_url: string,
     pushed_at: string,
     languages_url: string,
+    stargazers_count: number
 }

@@ -1,11 +1,11 @@
 // Componentes
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/index";
+import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "../animate-ui/components/animate/tooltip";
 // Utiles
 import { copyToClipboard, openNewTab } from "@/components/utils";
 // Iconos
 import { SiGmail, SiWhatsapp } from "react-icons/si";
 import { FaPhoneSquareAlt } from "react-icons/fa";
-import { FaTelegram, FaFacebook, FaInstagram, FaGithub } from "react-icons/fa6";
+import { FaTelegram, FaFacebook, FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
 
 interface contactsProps {
@@ -58,28 +58,36 @@ const contacts: contactsProps[] = [
         icon: <FaGithub className="m-auto" size={20} />,
         click: () => (openNewTab("https://github.com/Sathaniel99/", "Github")),
     },
+    {
+        name: "Linkedin",
+        bgClass: "border-cyan-700 text-cyan-700 hover:bg-cyan-700 hover:text-white shadow-cyan-700",
+        icon: <FaLinkedin className="m-auto" size={20} />,
+        click: () => (openNewTab("www.linkedin.com/in/sathaniel", "Linkedin")),
+    },
 ]
 
 export function Contacto() {
     return (
         <div className="mt-auto w-full">
             <h1 className="flex justify-center items-center gap-2 w-full">
-                ¡Contactame! <FaHeart className="text-red-600 animate-pulse"/>
+                ¡Contactame! <FaHeart className="text-red-600 animate-pulse" />
             </h1>
             <hr className="border-neutral-500 mb-2 mt-1"></hr>
-            <div className="flex flex-row justify-center w-full">
-                {contacts.map((ctc, index) => (
-                    <Tooltip key={index}>
-                        <TooltipTrigger>
-                            <div role="button" className={`w-8 h-8 fs-2 flex border-2 shadow-sm rounded-full transition-all ${ctc.bgClass}`} onClick={ctc.click}>
-                                {ctc.icon}
-                            </div>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            {ctc.name}
-                        </TooltipContent>
-                    </Tooltip>
-                ))}
+            <div className="flex flex-row justify-center">
+                <TooltipProvider>
+                    {contacts.map((ctc, index) => (
+                        <Tooltip key={index}>
+                            <TooltipTrigger>
+                                <div role="button" className={`w-8 h-8 fs-2 flex border-2 shadow-sm rounded-full transition-all ${ctc.bgClass}`} onClick={ctc.click}>
+                                    {ctc.icon}
+                                </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                {ctc.name}
+                            </TooltipContent>
+                        </Tooltip>
+                    ))}
+                </TooltipProvider>
             </div>
         </div>
     )

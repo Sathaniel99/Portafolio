@@ -1,4 +1,5 @@
 // Utiles
+import { TooltipProvider } from "@/components/animate-ui/components/animate/tooltip";
 import { type Categoria, Card_habilidad } from ".";
 
 const habilidades: Categoria[] = [
@@ -417,11 +418,14 @@ export function Habilidades() {
                         <div className="flex flex-wrap justify-start px-2 pb-5 rounded-md relative">
 
                             <div className="flex flex-wrap gap-2">
-                                {habilidad.tecnologias.map((tecnologia) => (
-                                    <Card_habilidad key={`${habilidad.categoria}-${tecnologia.text}`} url={tecnologia.url}
-                                        altImg={tecnologia.altImg} ariaLabel={tecnologia.ariaLabel} img={tecnologia.img}
-                                        text={tecnologia.text} bgClass={tecnologia.bgClass} />
-                                ))}
+                                <TooltipProvider>
+
+                                    {habilidad.tecnologias.map((tecnologia) => (
+                                        <Card_habilidad key={`${habilidad.categoria}-${tecnologia.text}`} url={tecnologia.url}
+                                            altImg={tecnologia.altImg} ariaLabel={tecnologia.ariaLabel} img={tecnologia.img}
+                                            text={tecnologia.text} bgClass={tecnologia.bgClass} />
+                                    ))}
+                                </TooltipProvider>
 
                             </div>
                         </div>

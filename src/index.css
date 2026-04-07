@@ -127,3 +127,13 @@
     cursor: pointer;
   }
 }
+
+body::selection {
+  background-color: rgb(0, 255, 60);
+  color: black;
+}
+
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}

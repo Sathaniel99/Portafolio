@@ -1,17 +1,20 @@
 // Componentes
-import { Input, Label, Textarea, Button, Tooltip, TooltipTrigger, TooltipContent, InputGroup, InputGroupAddon, InputGroupInput, toast } from "@/components/ui/index.ts"
+import { Label, Textarea, Button, InputGroup, InputGroupAddon, InputGroupInput, toast } from "@/components/ui/index.ts"
 // Hooks
 import { useState, useRef } from "react";
 // Iconos
 import { FiSend } from "react-icons/fi";
 import { MdEmail, MdTextFields } from "react-icons/md";
 import { FaRegCircleXmark } from "react-icons/fa6";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/animate-ui/components/animate/tooltip";
 // Utiles
 import { openNewTab } from "@/components/utils";
+import { Checkbox } from "@/components/animate-ui/components/headless/checkbox";
 
 export function Sugerencias() {
     // hooks
-    const [isChecked, setIsChecked] = useState<boolean>(true);
+    const [isChecked, setIsChecked] = useState<boolean>(false);
+    const refere = useRef<HTMLButtonElement>(null);
     const [inputText, setInputText] = useState("");
     const [textAreaText, setTextAreaText] = useState("");
     const [classInput, setClassInput] = useState("border-neutral-500");
@@ -29,8 +32,8 @@ export function Sugerencias() {
 
     // Funciones
     // Alternar el check
-    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setIsChecked(e.target.checked);
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
     };
 
     // Enviar mensaje
@@ -55,12 +58,12 @@ export function Sugerencias() {
             return;
         }
         setClassInput("border-green-600");
-        setClassTextArea("border-green-600");        
+        setClassTextArea("border-green-600");
         const encodedMessage = encodeURIComponent(msge);
         const encodedIdent = encodeURIComponent(ident);
-        
+
         const url = `https://wa.me/5491112345678?text=Hola%20soy%20${encodedIdent},%20escribo%20por%20mi%20sugerencia:%20${encodedMessage}`;
-        
+
         openNewTab(url, 'aplicación', "Whatsapp");
 
     }
@@ -130,14 +133,16 @@ export function Sugerencias() {
                     <InputGroupInput ref={identRef} id="ident" type={inputField} placeholder={placeholder} onChange={validation}></InputGroupInput>
                     {/* Checkbox derecho */}
                     <InputGroupAddon align={"inline-end"}>
-                        <Tooltip>
-                            <TooltipTrigger>
-                                <Input className="cursor-pointer h-full w-4 mx-1" type="checkbox" checked={isChecked} onChange={handleCheckboxChange}></Input>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                                {msgTooltip}
-                            </TooltipContent>
-                        </Tooltip>
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <Checkbox variant={"accent"} size={"sm"} ref={refere} onClick={() => handleCheckboxChange()} />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    {msgTooltip}
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
                     </InputGroupAddon>
                 </InputGroup>
                 <div className="h-4">

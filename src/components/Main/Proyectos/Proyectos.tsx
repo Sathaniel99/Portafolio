@@ -2,7 +2,7 @@
 import { Card_proyect, type Repo } from "./index"
 import { Separator } from "@/components/ui/index";
 // Hooks
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 // Utiles
 import axios from "axios";
 // Iconos
@@ -12,28 +12,30 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export const Proyectos = () => {
     const [repos, setRepos] = useState<Repo[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [isPending, startTransition] = useTransition();
+
+
     useEffect(() => {
         const fetchRepos = async () => {
             try {
                 const response = await axios.get("https://api.github.com/users/Sathaniel99/repos?type=owner");
-                setRepos(response.data);
+                startTransition(() => {
+                    setRepos(response.data);
+                });
             } catch (err) {
                 setError(
                     axios.isAxiosError(err)
                         ? err.response?.data.message || err.message
                         : "Error desconocido"
                 );
-            } finally {
-                setLoading(false);
             }
         };
 
         fetchRepos();
     }, []);
 
-    if (loading) return (
+    if (isPending) return (
         <>
             <h1 className="text-center text-3xl my-2 font-bold">Proyectos</h1>
             <hr className="border-neutral-500" />
@@ -50,10 +52,12 @@ export const Proyectos = () => {
             <hr className="border-neutral-500" />
             <Separator />
             <div className="">
-                <div className="flex flex-row items-center justify-center gap-2 mt-6 w-full">
-                    <FaRegCircleXmark className="text-red-600 size-7" />
-                    <h1 className="text-center text-red-600 text-lg">Ha ocurrido un error</h1>
-                    <p className="text-red-600">{error}</p>
+                <div className="flex flex-col items-center justify-center gap-2 mt-6 w-full border border-red-600 rounded-md p-3 bg-red-600/5">
+                    <div className="flex flex-row gap-2">
+                        <FaRegCircleXmark className="text-red-600 size-7" />
+                        <h1 className="text-center text-red-600 text-lg">Ha ocurrido un error</h1>
+                    </div>
+                    <p className="text-red-600 text-center">{error}</p>
                 </div>
             </div>
         </>

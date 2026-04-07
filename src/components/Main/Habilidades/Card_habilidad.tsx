@@ -1,5 +1,5 @@
 // Componentes
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/index";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/animate-ui/components/animate/tooltip";
 import { Spinner_Img } from "@/components/ui/index";
 // Utiles
 import type { Card_habilidadProp } from ".";

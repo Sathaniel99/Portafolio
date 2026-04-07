@@ -2,7 +2,7 @@
 import { useContext } from "react"
 import { WindowContext } from "../hooks/Context_api"
 // Componentes
-import { Button } from "../ui/index";
+import { RippleButtonRipples, RippleButton } from "../animate-ui/components/buttons/ripple";
 
 const buttons = [
     { text: "Sobre Mi", state: "SM" },
@@ -17,7 +17,14 @@ export function Buttons_page() {
     return (
         <div className="flex flex-col gap-3">
             {buttons.map((button, index) => (
-                <Button className="w-full" variant={ stateWindow == button.state ? 'default' : "ghost"} key={index} onClick={() => setStateWindow(`${button.state}`)}>{button.text}</Button>
+                <RippleButton
+                    className="w-full"
+                    variant={stateWindow == button.state ? 'default' : "ghost"}
+                    key={index} onClick={() => setStateWindow(`${button.state}`)}
+                >
+                    {button.text}
+                    <RippleButtonRipples />
+                </RippleButton>
             ))}
         </div>)
 }

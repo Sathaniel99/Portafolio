@@ -1,5 +1,6 @@
 // Componentes
-import { Button, Tooltip, TooltipContent, TooltipTrigger, Spinner, Spinner_Img } from "@/components/ui/index";
+import { Button, Spinner, Spinner_Img } from "@/components/ui/index";
+import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "@/components/animate-ui/components/animate/tooltip";
 import { ButtonRef, AccentSpan, buttons_ref, PERSONAL_INFO } from ".";
 // Iconos
 import { FaFilePdf, FaRegFileWord } from "react-icons/fa6";
@@ -40,34 +41,38 @@ export function Sobre_Mi() {
                     <span className="select-all">{PERSONAL_INFO.name}</span>
                     , tengo {PERSONAL_INFO.age} años, soy graduado de{" "}
                     <span className="user-select-all">{PERSONAL_INFO.university}</span> de la{" "}
-                    <ButtonRef ariaLabel={buttons_ref.uci.ariaLabel} text={buttons_ref.uci.text} url={buttons_ref.uci.url} img={buttons_ref.uci.img}></ButtonRef> en{" "}
-                    <ButtonRef ariaLabel={buttons_ref.habana.ariaLabel} text={buttons_ref.habana.text} url={buttons_ref.habana.url} img={buttons_ref.habana.img}></ButtonRef>
+                    <TooltipProvider>
+                        <ButtonRef ariaLabel={buttons_ref.uci.ariaLabel} text={buttons_ref.uci.text} url={buttons_ref.uci.url} img={buttons_ref.uci.img}></ButtonRef> en{" "}
+                        <ButtonRef ariaLabel={buttons_ref.habana.ariaLabel} text={buttons_ref.habana.text} url={buttons_ref.habana.url} img={buttons_ref.habana.img}></ButtonRef>
+                    </TooltipProvider>
                     , donde culminé mis estudios en julio de 2024. Previo a mi formación universitaria, me gradué del {PERSONAL_INFO.preUniversity} en junio de {PERSONAL_INFO.graduationYear}.
                 </p>
-                <p className="text-start fs-5 lh-sm my-3">
+                <div className="text-start fs-5 lh-sm my-3">
                     Actualmente trabajo en el:
-                    <Tooltip>
-                        <TooltipTrigger>
-                            <p className="text-start text-blue-600 hover:text-blue-400 active:text-blue-800 fw-bold transition-all">- {PERSONAL_INFO.currentJob.name}</p>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            <div className="w-60 h-45">
-                                <Spinner_Img img={"INOTU.webp"} altImg={"Logo INOTU"} />
-                            </div>
-                        </TooltipContent>
-                    </Tooltip>
-                    Ubicado en {PERSONAL_INFO.currentJob.location} En esta posición, complementé el desarrollo y gestión del proyecto :
-                    <Tooltip>
-                        <TooltipTrigger>
-                            <p className="text-start text-blue-600 hover:text-blue-400 active:text-blue-800 fw-bold transition-all">- {PERSONAL_INFO.currentJob.project}</p>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            <div className="w-60 h-45">
-                                <Spinner_Img img={"website.webp"} altImg={"Web SAGC"} />
-                            </div>
-                        </TooltipContent>
-                    </Tooltip><br />
-                </p>
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <span className="text-start text-blue-600 hover:text-blue-400 active:text-blue-800 fw-bold transition-all">- {PERSONAL_INFO.currentJob.name}</span>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <div className="w-60 h-45">
+                                    <Spinner_Img img={"INOTU.webp"} altImg={"Logo INOTU"} />
+                                </div>
+                            </TooltipContent>
+                        </Tooltip>
+                        Ubicado en {PERSONAL_INFO.currentJob.location} En esta posición, complementé el desarrollo y gestión del proyecto :
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <span className="text-start text-blue-600 hover:text-blue-400 active:text-blue-800 fw-bold transition-all">- {PERSONAL_INFO.currentJob.project}</span>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <div className="w-60 h-45">
+                                    <Spinner_Img img={"website.webp"} altImg={"Web SAGC"} />
+                                </div>
+                            </TooltipContent>
+                        </Tooltip><br />
+                    </TooltipProvider>
+                </div>
                 <span>Donde me encargué de aspectos relacionados con:</span>
                 <ul>
                     {PERSONAL_INFO.currentJob.responsibilities.map((respon, index) => (
@@ -91,7 +96,8 @@ export function Sobre_Mi() {
                         {isDownloadingDoc ? <Spinner /> : <MdDownload />} Descargar <FaRegFileWord />
                     </Button>
                 </div>
-            </div>
+            </div >
+
 
         </>
     )

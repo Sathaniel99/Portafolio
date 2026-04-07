@@ -1,34 +1,15 @@
-// Hooks
-import { useState } from "react";
 // Componentes
-import { Button } from "./ui/index";
-// Iconos
-import { FaMoon } from "react-icons/fa";
-import { IoSunnyOutline } from "react-icons/io5";
+import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
 
 export function Theme() {
-    const [theme, setTheme] = useState<string>(() => {
-        const savedTheme = localStorage.getItem("theme") || "light";
-        document.documentElement.className = savedTheme;
-        return savedTheme;
-    });
 
-    const toggleTheme = () => {
-        const newTheme = theme === "light" ? "dark" : "light";
-        setTheme(newTheme);
-        document.documentElement.className = newTheme;
-        localStorage.setItem("theme", newTheme);
-    };
-
-    const icon = theme === "light" ? <FaMoon /> : <IoSunnyOutline />;
+    const classButton = "absolute top-0 end-0 mt-2 me-2 z-25 border bg-background/30 shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 p-2 rounded-full transition-all"
 
     return (
-        <Button
-            className="absolute top-0 end-0 mt-2 me-2 z-25"
-            variant={"outline"}
-            onClick={toggleTheme}
-        >
-            {icon}
-        </Button>
+        <AnimatedThemeToggler
+            className={classButton}
+            duration={800}
+            
+        />
     );
 }
