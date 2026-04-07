@@ -38,7 +38,7 @@ export function Sobre_Mi() {
             <div className="flex-1 overflow-y-auto scrollbar-hide px-2">
                 <p className="text-start fs-5 lh-sm my-3">
                     Mi nombre es{" "}
-                    <span className="select-all">{PERSONAL_INFO.name}</span>
+                    <span className="select-all font-bold">{PERSONAL_INFO.name}</span>
                     , tengo {PERSONAL_INFO.age} años, soy graduado de{" "}
                     <span className="user-select-all">{PERSONAL_INFO.university}</span> de la{" "}
                     <TooltipProvider>
@@ -85,16 +85,18 @@ export function Sobre_Mi() {
                 </p>
                 <hr className="border-neutral-500" />
                 {/* Boton de descarga para el CV */}
-                <div className="w-full flex items-center my-3 gap-2">
+                <div className="w-full flex flex-col sm:flex-row items-center my-3 gap-2">
                     <span className="text-green-900 dark:text-green-500 animate-pulse">Descargar mi CV:</span>
-                    <Button variant={'outline'} disabled={isDownloadingPdf}
-                        onClick={handleDownloadCV("pdf", setIsDownloadingPdf)}>
-                        {isDownloadingPdf ? <Spinner /> : <MdDownload />} Descargar <FaFilePdf />
-                    </Button>
-                    <Button variant={'outline'} disabled={isDownloadingDoc}
-                        onClick={handleDownloadCV("doc", setIsDownloadingDoc)}>
-                        {isDownloadingDoc ? <Spinner /> : <MdDownload />} Descargar <FaRegFileWord />
-                    </Button>
+                    <div className="flex gap-2">
+                        <Button variant={'outline'} disabled={isDownloadingPdf}
+                            onClick={handleDownloadCV("pdf", setIsDownloadingPdf)}>
+                            {isDownloadingPdf ? <Spinner /> : <MdDownload />} Descargar <FaFilePdf />
+                        </Button>
+                        <Button variant={'outline'} disabled={isDownloadingDoc}
+                            onClick={handleDownloadCV("doc", setIsDownloadingDoc)}>
+                            {isDownloadingDoc ? <Spinner /> : <MdDownload />} Descargar <FaRegFileWord />
+                        </Button>
+                    </div>
                 </div>
             </div >
 

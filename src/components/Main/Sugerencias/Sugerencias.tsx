@@ -148,7 +148,7 @@ export function Sugerencias() {
                 <div className="h-4">
                     {textAreaText != "" && (<Label className="text-red-600 px-3 rounded flex flex-row items-center gap-2"><FaRegCircleXmark /> {textAreaText}</Label>)}
                 </div>
-                <Textarea ref={msgRef} id="msg" className={`h-50 ${classTextArea}`} cols={5} onChange={handleTextAreaValidation} placeholder="Sugiera en este contenedor de texto..."></Textarea>
+                <Textarea ref={msgRef} id="msg" className={`h-full ${classTextArea}`} cols={5} onChange={handleTextAreaValidation} placeholder="Sugiera en este contenedor de texto..."></Textarea>
 
                 <div className="flex flex-col justify-center mt-5 gap-2">
                     <Button className="mx-auto" onClick={handleSendMessage}><FiSend /> Enviar</Button>
