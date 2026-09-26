@@ -1,6 +1,3 @@
-'use client';
-
-import * as React from 'react';
 import { type VariantProps } from 'class-variance-authority';
 
 import { buttonVariants } from '@/components/animate-ui/components/buttons/button';
